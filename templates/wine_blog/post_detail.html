@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container bg-2 text-center">
+        <h1 class="bg-grey text-secondary">{{ post.title }}</h1>
+        <h6 class="text-right text-secondary">{{ post.created_at|date:"Y / m / d" }}</h6>
+        <h5 class="text-right text-secondary">
+            <span class="badge badge-secondary"><a href="{% url 'country-detail' post.country.slug %}" class="text-light">{{ post.country }}</a></span>
+            <span class="badge badge-secondary"><a href="{% url 'type-detail' post.type.slug %}" class="text-light">{{ post.type }}</a></span>
+            {% for variety in post.variety.all %}
+            <span class="badge badge-secondary"><a href="{% url 'variety-detail' variety.slug %}" class="text-light">{{ variety }}</a></span>
+            {% endfor %}
+        </h5>
+        <p class="text-left text-secondary">
+            {{ post.content|safe }}
+        </p>
+    </div>
+{% endblock %}

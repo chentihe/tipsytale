@@ -1,0 +1,35 @@
+body { padding-top: 90px; }
+/* Add a dark background color with a little bit see-through */
+.navbar {
+  margin-bottom: 0;
+  background-color: #2d2d30;
+  border: 0;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+/* Add a gray color to all navbar links */
+.navbar-nav li a, .navbar .navbar-brand {
+  color: #d5d5d5 !important;
+}
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+  color: #fff !important;
+}
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+
+.bg-grey { background-color:#afc8c8; }
+
+/* crop the bottle of wine */
+.img {
+margin-top: 10px;
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.img-fluid{
+margin-top: -20%;
+margin-bottom: -55%;
+}

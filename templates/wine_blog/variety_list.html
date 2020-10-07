@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+<!--        手機瀏覽為select，電腦瀏覽為側邊欄-->
+        <div class="col-sm-3">
+            <h3 class="text-secondary">Variety List</h3>
+            {% if variety_list %}
+                <ul>
+                    {% for variety in variety_list %}
+                    <li>
+                        <a class="text-right text-secondary" href="{% url 'variety-detail' variety.slug %}">{{ variety.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>There are no varieties.</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-9">
+
+        <h1 class="bg-grey text-secondary text-center">All Variety</h1>
+            {% for post in variety_detail %}
+            <div>
+                <h5 class="d-inline"><a href="{% url 'post-detail' post.slug %}" class="text-secondary">
+                {{post.title}}
+                </a>
+                <a href="{% url 'country-detail' post.country.slug %}" class="badge badge-secondary">{{ post.country }}</a>
+                <a href="{% url 'type-detail' post.type.slug %}" class="badge badge-secondary">{{ post.type }}</a>
+                </h5>
+                <h6 class="text-secondary d-inline">{{ post.created_at }}</h6>
+            </div>
+            <div class="img">
+                <a href="{% url 'post-detail' post.slug %}">
+                <img class="img-fluid" alt="Responsive image" src="{{ MEDIA_URL }}{{ post.wine_img }}"/>
+                </a>
+            </div>
+            {% endfor %}
+        {% block variety %}
+        {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!--        <div id="mySidenav" class="sidenav">-->
+<!--        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+<!--        <a href="#">About</a>-->
+<!--        <a href="#">Services</a>-->
+<!--        <a href="#">Clients</a>-->
+<!--        <a href="#">Contact</a>-->
+<!--    </div>-->
+<!--    <div id="main">-->
+<!--      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>-->
+<!--    </div>-->
+
+<!--<div class="col-md-6 col-lg-4 col-xl-3"> 會更好-->
+
+<!--手機上會堆疊-->
+<!--平板上會2個一排-->
+<!--平板橫放會3個一排-->
+<!--PC 上會4個一排-->

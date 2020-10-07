@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="zh-Hant-TW">
+<head>
+  <title>Wine Story</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- RWD基本設計 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link href="{% static 'css/style.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static 'js/main.js' %}?{% now 'U' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <!--brand-->
+        <a class="navbar-brand" href="/">Tipsy Tale</a>
+        <!--Toggler/collaspible Button-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--Navbar links-->
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'countries' %}">Country</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'types' %}">Type</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'varieties' %}">Variety</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>Tipsy Tale</h1>
+        <p>Glass / Wine / Story / Night</p>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>

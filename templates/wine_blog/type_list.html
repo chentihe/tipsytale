@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Type List</h3>
+            {% if type_list %}
+                <ul>
+                {% for type in type_list %}
+                <li>
+                    <a class="text-right text-secondary" href="{% url 'type-detail' type.slug %}">{{ type.name }}</a>
+                </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+            <p>There are no types.</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-9">
+            <h1 class="bg-grey text-secondary text-center">All Type</h1>
+            {% for post in type_detail %}
+            <div>
+                <h5 class="d-inline"><a href="{% url 'post-detail' post.slug %}" class="text-secondary">
+                {{post.title}}
+                </a>
+                <a href="{% url 'country-detail' post.country.slug %}" class="badge badge-secondary">{{ post.country }}</a>
+                {% for variety in post.variety.all %}
+                <a href="{% url 'type-detail' post.type.slug %}" class="badge badge-secondary">{{ variety }}</a>
+                {% endfor %}
+                </h5>
+                <h6 class="text-secondary d-inline">{{ post.created_at }}</h6>
+            </div>
+            <div class="img">
+                <a href="{% url 'post-detail' post.slug %}">
+                <img class="img-fluid" alt="Responsive image" src="{{ MEDIA_URL }}{{ post.wine_img }}"/>
+                </a>
+            </div>
+            {% endfor %}
+            {% block type %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!--<div class="col-md-6 col-lg-4 col-xl-3"> 會更好-->
+
+<!--手機上會堆疊-->
+<!--平板上會2個一排-->
+<!--平板橫放會3個一排-->
+<!--PC 上會4個一排-->

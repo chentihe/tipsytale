@@ -1,0 +1,25 @@
+{% extends 'type_list.html' %}
+{% block type %}
+        <h1 class="bg-grey text-secondary text-center">{{ type }}</h1>
+
+            {% for post in type.post_set.all %}
+
+                <h5 class="d-inline"><a href="{% url 'post-detail' post.slug %}" class="text-secondary">
+                {{post.title}}
+                </a>
+                <a href="{% url 'country-detail' post.country.slug %}" class="badge badge-secondary">{{ post.country }}</a>
+               {% for variety in post.variety.all %}
+                <a href="{% url 'type-detail' post.type.slug %}" class="badge badge-secondary">{{ variety }}</a>
+                {% endfor %}
+                </h5>
+                <h6 class="text-secondary d-inline">{{ post.created_at }}</h6>
+
+        <div class="img">
+            <a href="{% url 'post-detail' post.slug %}">
+            <img class="img-fluid" alt="Responsive image" src="{{ MEDIA_URL }}{{ post.wine_img }}"/>
+            </a>
+        </div>
+
+            {% endfor %}
+
+{% endblock %}

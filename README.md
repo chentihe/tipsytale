@@ -1,7 +1,7 @@
 # Tipsytale
 This is my first website.
 
-Here's the [link](https://tipsytale.blog), feel free to stop by.
+![tipsytale](https://github.com/chentihe/tipsytale/blob/master/tipsytale.png)
 
 ## Using tool
 * Django
